@@ -1,5 +1,8 @@
 package org_Module;
 
+import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
 
 import genericUtility.BaseClass;
@@ -26,5 +29,8 @@ public class CreateOrganizationWithOrgName_Test extends BaseClass{
 		
 		NewOrganizationPage nop = new NewOrganizationPage(driver);
 		nop.createOrg(orgName, assign, assVal);		
+		
+		Assert.assertEquals(driver.findElement(By.xpath("//span[@class='dvHeaderText']")).getText().contains(orgName),true);
+		Reporter.log("Organization created successfully",true);
 	}
 }
